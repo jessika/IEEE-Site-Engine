@@ -1,5 +1,5 @@
 Ieee::Application.routes.draw do
-#  get "sessions/new"
+  root :to => "users#home"
 
   get "signup" => "users#new", :as => "signup"
   get "home" => "users#home", :as => "home"
@@ -37,8 +37,6 @@ Ieee::Application.routes.draw do
     get 'contact' => 'about#contact', :as => 'contact'
   end
 
-  root :to => "users#home"
-
   scope 'users', :as => :users do
     get '/new' => 'users#new', :as => :new
     post '/new' => 'users#create', :as => :create
@@ -68,4 +66,5 @@ Ieee::Application.routes.draw do
   resources :events
   resources :posts
   resources :photos, :only => [:show, :index]
+  resources :donations, :only => [:new, :create]
 end

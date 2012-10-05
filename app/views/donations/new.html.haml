@@ -1,0 +1,49 @@
+-# get rid of this line if Stripe button works
+= javascript_include_tag 'donations'
+
+.stripe-form
+  %form#payment-form{:action => '/donations', :method => 'POST'}
+    .form-row
+      .payment-errors
+    .form-row
+      %input#cardholder-name{:name => 'name', :size => '20', :type => 'text', :placeholder => 'Cardholder Name'}
+    .form-row
+      %input#company{:name => 'company', :size => '20', :type => 'text', :placeholder => 'Company (optional)'}
+    .form-row
+      %input#amount{:name => 'amount', :size => '10', :type => 'text', :placeholder => 'Amount'}
+    .form-row
+      %input#card-number{:autocomplete => 'off', :size => '20', :type => 'text', :placeholder => 'Card Number'}
+    .form-row
+      %input#card-cvc{:autocomplete => 'off', :size => '4', :type => 'text', :placeholder => 'CVC'}
+    .form-row
+      %input#card-expiry-month{:size => '2', :type => 'text', :placeholder => 'MM'}
+      %span /
+      %input#card-expiry-year{:size => '4', :type => 'text', :placeholder => 'YYYY'}
+      %br
+    .form-row
+      %select.description{:name => 'description'}
+        %option Donations
+        %option Corporate Sponsorship
+        %option Recruiting Event Expenses
+        %option Recruiting Event Donations
+        %option Other
+    .form-row
+      %button.submit-button{:type => 'submit'} Submit Payment
+
+  -# This is for Stripe button
+    =form_tag '/donations/create', :id => 'payment-form' do
+      .form-row
+        =text_field_tag 'company', nil, :size => '20', :placeholder => 'Company (optional)'
+      .form-row
+        =text_field_tag 'amount', nil, :size => '10', :placeholder => 'Amount'
+      .form-row
+        =text_field_tag 'currency', nil, :size => '10', :placeholder => 'Currency'
+      .form-row
+        %select#description{:name => 'description'}
+          %option Donations
+          %option Corporate Sponsorship
+          %option Recruiting Event Expenses
+          %option Recruiting Event Donations
+          %option Other
+      .form-row
+        %script.stripe-button{:src => "https://button.stripe.com/v1/button.js", ":data-key" => "pk_zoy1u3xaiebEhp2jLt7BNRZ2HtRuc"}

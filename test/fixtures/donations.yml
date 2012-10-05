@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  company: MyString
+  amount: 1
+  currency: MyString
+  description: MyString
+
+two:
+  name: MyString
+  company: MyString
+  amount: 1
+  currency: MyString
+  description: MyString

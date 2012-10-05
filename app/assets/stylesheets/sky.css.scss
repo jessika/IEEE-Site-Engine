@@ -307,7 +307,7 @@ img.button {
   float: left;
 }
 
-a.hope_nav_link, a.about_nav_link, a.industry_nav_link {
+a.hope_nav_link, a.about_nav_link, a.industry-nav-link {
   margin-right: 33px;
   font-size: 12pt;
 }
@@ -352,3 +352,8 @@ a.hope_nav_link, a.about_nav_link, a.industry_nav_link {
 .fb-like {
 	margin-bottom: 15px;
 }
+
+.stripe-form {
+  margin-top: 20px;
+}
+

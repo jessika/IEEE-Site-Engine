@@ -1,3 +1,4 @@
+// Delete this file if Stripe button works
 $(document).ready(function() {
 
   function stripeResponseHandler(status, response) {
@@ -21,11 +22,11 @@ $(document).ready(function() {
     $('.submit-button').attr("disabled", "disabled");
 
     Stripe.createToken({
-        name: $('.card-name').val(),
-        number: $('.card-number').val(),
-        cvc: $('.card-cvc').val(),
-        exp_month: $('.card-expiry-month').val(),
-        exp_year: $('.card-expiry-year').val()
+        name: $('#cardholder-name').val(),
+        number: $('#card-number').val(),
+        cvc: $('#card-cvc').val(),
+        exp_month: $('#card-expiry-month').val(),
+        exp_year: $('#card-expiry-year').val()
     }, stripeResponseHandler);
 
     // prevent the form from submitting with the default action
