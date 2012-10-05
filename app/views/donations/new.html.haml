@@ -10,7 +10,7 @@
     .form-row
       %input#company{:name => 'company', :size => '20', :type => 'text', :placeholder => 'Company (optional)'}
     .form-row
-      %input#amount{:name => 'amount', :size => '10', :type => 'text', :placeholder => 'Amount'}
+      %input#amount{:name => 'amount', :size => '10', :type => 'text', :placeholder => '$0.00'}
     .form-row
       %input#card-number{:autocomplete => 'off', :size => '20', :type => 'text', :placeholder => 'Card Number'}
     .form-row
@@ -19,6 +19,7 @@
       %input#card-expiry-month{:size => '2', :type => 'text', :placeholder => 'MM'}
       %span /
       %input#card-expiry-year{:size => '4', :type => 'text', :placeholder => 'YYYY'}
+      exp. 
       %br
     .form-row
       %select.description{:name => 'description'}
