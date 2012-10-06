@@ -56,39 +56,35 @@
 
     #navigation {
       padding: 0px;
-      margin: 70px 10px 0px 0px;
+      margin: 70px 0px 0px 0px;
       list-style-type: none;
       @include floater(block, right);
       width: $navigation_width;
 
       a {
-        background: url("../images/sky/navigation.png");
+        background: url("../images/sky/nav.png");
         height: 11px;
         text-indent: -9000px;
         @include floater(block, left);
 
          &.home_link {
-            @include set_navigation(-1px, 42px, 21px);
+            @include set_navigation(-1px, 37px, 23px);
          }
 
          &.events_link {
-            @include set_navigation(51px, 54px, 21px)
+            @include set_navigation(57px, 53px, 23px)
          }
 
          &.ir_link {
-             @include set_navigation(120px, 168px, 18px);
+             @include set_navigation(129px, 69px, 23px);
          }
 
          &.hope_link {
-             @include set_navigation(305px, 46px, 21px);
-         }
-
-         &.scope_link {
-             @include set_navigation(371px, 46px, 21px);
+             @include set_navigation(301px, 52px, 23px);
          }
 
          &.about_link {
-             @include set_navigation(440px, 70px, 24px);
+             @include set_navigation(436px, 48px, 23px);
          }
       }
     }
