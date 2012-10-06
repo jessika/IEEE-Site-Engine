@@ -1,6 +1,8 @@
 %h2
-  ="Thank you, you paid $#{@dollar_amount}."
+  ="You donated $#{@dollar_amount}. Thank you!"
 
-%div
+%p
   =link_to 'Make another donation', new_donation_path
 
+%p
+  =link_to 'Go back to Industrial Relations', industry_information_url

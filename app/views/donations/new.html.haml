@@ -7,29 +7,44 @@
       .payment-errors
     .form-row
       %input#cardholder-name{:name => 'name', :size => '20', :type => 'text', :placeholder => 'Cardholder Name'}
+      /[if IE]
+        %span.cardholder-name Cardholder Name      
     .form-row
       %input#company{:name => 'company', :size => '20', :type => 'text', :placeholder => 'Company (optional)'}
+      /[if IE]
+        %span.company Company (optional)      
     .form-row
       %input#amount{:name => 'amount', :size => '10', :type => 'text', :placeholder => '$0.00'}
+      /[if IE]
+        %span.amount $0.00      
     .form-row
       %input#card-number{:autocomplete => 'off', :size => '20', :type => 'text', :placeholder => 'Card Number'}
+      /[if IE]
+        %span.card-number Card Number
     .form-row
       %input#card-cvc{:autocomplete => 'off', :size => '4', :type => 'text', :placeholder => 'CVC'}
+      /[if IE]
+        %span.card-cvc CVC
     .form-row
       %input#card-expiry-month{:size => '2', :type => 'text', :placeholder => 'MM'}
       %span /
       %input#card-expiry-year{:size => '4', :type => 'text', :placeholder => 'YYYY'}
-      exp. 
+      /[if IE]
+        %span.card-expiry MM / YYYY   
+      %span expiration 
       %br
     .form-row
       %select.description{:name => 'description'}
-        %option Donations
+        %option Donation
         %option Corporate Sponsorship
         %option Recruiting Event Expenses
         %option Recruiting Event Donations
         %option Other
     .form-row
       %button.submit-button{:type => 'submit'} Submit Payment
+      
+%p#html5-warning
+  Form not displaying properly? Try switching to an HTML5-complient browser.
 
   -# This is for Stripe button
     =form_tag '/donations/create', :id => 'payment-form' do
@@ -41,7 +56,7 @@
         =text_field_tag 'currency', nil, :size => '10', :placeholder => 'Currency'
       .form-row
         %select#description{:name => 'description'}
-          %option Donations
+          %option Donation
           %option Corporate Sponsorship
           %option Recruiting Event Expenses
           %option Recruiting Event Donations
