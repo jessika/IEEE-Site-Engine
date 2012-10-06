@@ -1,6 +1,9 @@
 -# get rid of this line if Stripe button works
 = javascript_include_tag 'donations'
 
+%p#secure-info
+  We process your payment securely using #{link_to "Stripe", "https://stripe.com/"}.
+  
 .stripe-form
   %form#payment-form{:action => '/donations', :method => 'POST'}
     .form-row
@@ -14,7 +17,7 @@
       /[if IE]
         %span.company Company (optional)      
     .form-row
-      %input#amount{:name => 'amount', :size => '10', :type => 'text', :placeholder => '$0.00'}
+      %input#amount{:name => 'amount', :size => '20', :type => 'text', :placeholder => '$0.00'}
       /[if IE]
         %span.amount $0.00      
     .form-row
@@ -42,7 +45,7 @@
         %option Other
     .form-row
       %button.submit-button{:type => 'submit'} Submit Payment
-      
+
 %p#html5-warning
   Form not displaying properly? Try switching to an HTML5-complient browser.
 

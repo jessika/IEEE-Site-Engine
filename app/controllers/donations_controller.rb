@@ -3,6 +3,16 @@ class DonationsController < ApplicationController
   end
 
   def create
+    @dollar_amount = amount = 0
+    if params[:amount] =~ /^\$?(\d*)\.?(\d{0,2}).*/
+      dollars, cents = $1, $2
+      dollars = "0" if dollars == ""
+      cents = "00" if cents == ""
+      cents += "0" if cents.length == 1
+      amount = (dollars.to_i * 100) + cents.to_i
+      @dollar_amount = dollars + "." + cents
+    end
+    
     Stripe.api_key = "sk_giwOujcUI3OferKZpqb9fttrVbCnK"
 
     token = params[:stripeToken]
@@ -10,19 +20,21 @@ class DonationsController < ApplicationController
     company = params[:company]
     description = params[:description]
 
-    @dollar_amount = params[:amount]
-    dollars, cents = @dollar_amount.split('.')
-    amount = (dollars.to_i * 100) + cents.to_i
-
     charge = Stripe::Charge.create(:amount => amount, :card => token, :description => "#{company}: #{description}", :currency => 'usd')
 
     if charge
       Donation.create(:name => name, :company => company, :amount => amount, :description => description)
     end
 
-  rescue Stripe::CardError => e
-    # TODO catch this message and print custom one?
-    flash[:error] = e.message
+  rescue Stripe::CardError => e    
+    flash[:error] = "We're sorry, there was an error with your Credit Card"
     redirect_to new_donation_path
+  rescue Stripe::InvalidRequestError => e
+    flash[:error] = "We're sorry, there was a problem with your payment request"
+    if amount < 50
+      flash[:error] = "Sorry, donation amounts must be at least $0.50"
+    end
+    redirect_to new_donation_path  
+    return
   end
 end

@@ -3,7 +3,7 @@
     = link_to "", "http://www.ieee.org", :class => "ieee_link"
     #flash
       - flash.each do |type, message|
-        %div{:class => "message #{type}"}
+        %div{:class => "message_#{type}"}
           %p
             = message
     - if User.exists? and current_user
