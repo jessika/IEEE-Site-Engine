@@ -264,13 +264,13 @@ blockquote, address {
   margin-bottom: -10px;
 }
 
-input#email, input#password, input#user_email,
-input#user_name, input#user_year, input#user_position,
-input#user_password, input#user_password_confirmation
-{
-  color: #888;
+.form-error {
+  color: red;
+}
+
+.form-input {
   border: 1px solid #C0C0C0;
-  font-size: 20px;
+  font-size: 16px;
   padding: 10px;
 }
 

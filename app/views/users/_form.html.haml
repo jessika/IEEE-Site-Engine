@@ -1,23 +1,23 @@
 = form_for @user, :url => @url_path, :html => { :multipart => true } do |f|
   - if @user.errors.any?
     .error_messages
-      %h2 Form is invalid
+      %h3 Form is invalid
       %ul
         - for message in @user.errors.full_messages
-          %li= message
-  %p
-    = f.text_field :email, :value => "email address", :onfocus => "clearfield(this)", :onblur => "resetfield(this)"
-  %p
-    = f.text_field :name, :value => "name", :onfocus => "clearfield(this)", :onblur => "resetfield(this)"
-  %p
-    = f.text_field :year, :value => "year", :onfocus => "clearfield(this)", :onblur => "resetfield(this)"
-  %p
-    = f.text_field :position, :value => "position", :onfocus => "clearfield(this)", :onblur => "resetfield(this)"
-  %p
-    = f.text_field :password, :value => "password", :onfocus => "pwclearfield(this)", :onblur => "pwresetfield(this)"
-  %p
-    = f.text_field :password_confirmation, :value => "confirm password", :onfocus => "pwclearfield(this)", :onblur => "pwresetfield(this)"
-  %p
+          %li.form-error= message
+  .form-row
+    = f.text_field :email, :value => "#{@user.email}", :placeholder => 'Email address', :class => 'form-input'
+  .form-row
+    = f.text_field :name, :value => "#{@user.name}", :placeholder => 'Full Name', :class => 'form-input'
+  .form-row
+    = f.text_field :year, :value => "#{@user.year}", :placeholder => 'Year of Graduation', :class => 'form-input'
+  .form-row
+    = f.text_field :position, :value => "#{@user.position}", :placeholder => 'Committee', :class => 'form-input'
+  .form-row
+    = f.password_field :password, :placeholder => 'Password', :class => 'form-input'
+  .form-row
+    = f.password_field :password_confirmation, :placeholder => 'Confirm password', :class => 'form-input'
+  .form-row
     %button{:type => "submit", :class => "positive"}
       = image_tag("sky/check.png", :class => "button")
       Update User

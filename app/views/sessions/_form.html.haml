@@ -1,10 +1,9 @@
 = form_tag 'sessions' do
-  %div
-    %p
-      = text_field_tag :email, params[:email], :value => "email", :onfocus => "clearfield(this)", :onblur => "resetfield(this)"
-    %p
-      = text_field_tag :password, params[:password], :value => "password", :onfocus => "pwclearfield(this)", :onblur => "pwresetfield(this)"
-    %p
-      %button{:type => "submit"}
-        = image_tag("sky/key.png", :class => "button")
-        Log in
+  .form-row
+    = text_field_tag :email, params[:email], :placeholder => 'Email', :class => 'form-input', :size => '25'
+  .form-row
+    = password_field_tag :password, params[:password], :placeholder => 'Password', :class => 'form-input', :size => '25'
+  .form-row
+    %button{:type => "submit"}
+      = image_tag("sky/key.png", :class => "button")
+      Log in
