@@ -1,4 +1,3 @@
-// Delete this file if Stripe button works
 $(document).ready(function() {
 
   function stripeResponseHandler(status, response) {

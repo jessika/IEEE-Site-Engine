@@ -12,8 +12,6 @@ class DonationsController < ApplicationController
       amount = (dollars.to_i * 100) + cents.to_i
       @dollar_amount = dollars + "." + cents
     end
-    
-    Stripe.api_key = "sk_giwOujcUI3OferKZpqb9fttrVbCnK"
 
     token = params[:stripeToken]
     name = params[:name]
@@ -26,7 +24,7 @@ class DonationsController < ApplicationController
       Donation.create(:name => name, :company => company, :amount => amount, :description => description)
     end
 
-  rescue Stripe::CardError => e    
+  rescue Stripe::CardError => e
     flash[:error] = "We're sorry, there was an error with your Credit Card"
     redirect_to new_donation_path
   rescue Stripe::InvalidRequestError => e
@@ -34,7 +32,7 @@ class DonationsController < ApplicationController
     if amount < 50
       flash[:error] = "Sorry, donation amounts must be at least $0.50"
     end
-    redirect_to new_donation_path  
+    redirect_to new_donation_path
     return
   end
 end

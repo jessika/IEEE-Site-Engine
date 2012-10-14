@@ -1,4 +1,3 @@
--# get rid of this line if Stripe button works
 = javascript_include_tag 'donations'
 
 %p#secure-info
@@ -49,20 +48,3 @@
 %p#html5-warning
   Form not displaying properly? Try switching to an HTML5-complient browser.
 
-  -# This is for Stripe button
-    =form_tag '/donations/create', :id => 'payment-form' do
-      .form-row
-        =text_field_tag 'company', nil, :size => '20', :placeholder => 'Company (optional)'
-      .form-row
-        =text_field_tag 'amount', nil, :size => '10', :placeholder => 'Amount'
-      .form-row
-        =text_field_tag 'currency', nil, :size => '10', :placeholder => 'Currency'
-      .form-row
-        %select#description{:name => 'description'}
-          %option Donation
-          %option Corporate Sponsorship
-          %option Recruiting Event Expenses
-          %option Recruiting Event Donations
-          %option Other
-      .form-row
-        %script.stripe-button{:src => "https://button.stripe.com/v1/button.js", ":data-key" => "pk_zoy1u3xaiebEhp2jLt7BNRZ2HtRuc"}
