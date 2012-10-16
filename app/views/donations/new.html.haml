@@ -1,50 +1,27 @@
-= javascript_include_tag 'donations'
-
-%p#secure-info
-  We process your payment securely using #{link_to "Stripe", "https://stripe.com/"}.
-
 .stripe-form
-  %form#payment-form{:action => '/donations', :method => 'POST'}
+  =form_tag '/donations', :id => 'payment-form' do
     .form-row
-      .payment-errors
-    .form-row
-      %input#cardholder-name{:name => 'name', :size => '20', :type => 'text', :placeholder => 'Cardholder Name'}
+      =text_field_tag 'name', nil, :placeholder => 'Name of Donor', :class => 'form-input'
       /[if IE]
-        %span.cardholder-name Cardholder Name
+        %span Name of Donor
     .form-row
-      %input#company{:name => 'company', :size => '20', :type => 'text', :placeholder => 'Company (optional)'}
+      =text_field_tag 'amount', nil, :placeholder => '$0.00', :class => 'form-input'
       /[if IE]
-        %span.company Company (optional)
+        %span Amount ($0.00)
     .form-row
-      %input#amount{:name => 'amount', :size => '20', :type => 'text', :placeholder => '$0.00'}
+      =text_field_tag 'company', nil, :placeholder => 'Company (optional)', :class => 'form-input'
       /[if IE]
-        %span.amount $0.00
+        %span Company (optional)
     .form-row
-      %input#card-number{:autocomplete => 'off', :size => '20', :type => 'text', :placeholder => 'Card Number'}
-      /[if IE]
-        %span.card-number Card Number
-    .form-row
-      %input#card-cvc{:autocomplete => 'off', :size => '4', :type => 'text', :placeholder => 'CVC'}
-      /[if IE]
-        %span.card-cvc CVC
-    .form-row
-      %input#card-expiry-month{:size => '2', :type => 'text', :placeholder => 'MM'}
-      %span /
-      %input#card-expiry-year{:size => '4', :type => 'text', :placeholder => 'YYYY'}
-      /[if IE]
-        %span.card-expiry MM / YYYY
-      %span expiration
-      %br
-    .form-row
-      %select.description{:name => 'description'}
+      %select#stripe-description{:name => 'description'}
         %option Donation
         %option Corporate Sponsorship
         %option Recruiting Event Expenses
-        %option Recruiting Event Donations
+        %option Recruiting Event Donation
         %option Other
     .form-row
-      %button.submit-button{:type => 'submit'} Submit Payment
+      %script.stripe-button{:src => "https://button.stripe.com/v1/button.js", "data-key" => @publishable_key}
 
 %p#html5-warning
-  Form not displaying properly? Try switching to an HTML5-complient browser.
+  Form not displaying properly? Try switching to an HTML5-compliant browser.
 

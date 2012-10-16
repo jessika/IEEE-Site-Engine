@@ -1,5 +1,6 @@
 class DonationsController < ApplicationController
   def new
+    @publishable_key = Rails.configuration.stripe[:publishable_key]
   end
 
   def create

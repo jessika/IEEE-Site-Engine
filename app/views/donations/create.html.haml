@@ -1,5 +1,9 @@
 %h2
-  ="You donated $#{@dollar_amount}. Thank you!"
+
+%p.donation-thank-you
+  ="You donated $#{@dollar_amount}"
+%p.donation-thank-you
+  Thank you!
 
 %p
   =link_to 'Make another donation', new_donation_path

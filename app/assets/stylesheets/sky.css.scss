@@ -357,15 +357,25 @@ a.hope_nav_link, a.about_nav_link, a.industry-nav-link {
   margin-top: 20px;
 }
 
-#html5-warning {
-  margin-top: 30px;
-  font-size: 10px;
-}
-
 .payment-errors {
   color: red;
 }
 
 .message_error {
   color: red;
+}
+
+#stripe-description {
+  font-size: 16px;
+  margin-bottom: 30px;
+  margin-left: 1px;
+}
+
+#html5-warning {
+  margin-top: 30px;
+  font-size: 10px;
+}
+
+.donation-thank-you {
+  font-size: 1.5em;
 }
