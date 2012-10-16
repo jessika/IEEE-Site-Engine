@@ -1,10 +1,8 @@
 = form_for @e, :url => @url_path,  :html => { :multipart => true } do |f|
   - if @e.errors.any?
-    .error_messages
-      %h2 Form is invalid
-      %ul
-        - for message in @e.errors.full_messages
-          %li= message
+    - @e.errors.full_messages.each do |message|
+      .message_error
+        %p= message
   %p
     #label
       = f.label :title

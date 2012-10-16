@@ -357,12 +357,10 @@ a.hope_nav_link, a.about_nav_link, a.industry-nav-link {
   margin-top: 20px;
 }
 
-.payment-errors {
-  color: red;
-}
-
 .message_error {
-  color: red;
+  color: #CF2828;
+  border-left: 3px solid;
+  padding-left: 10px;
 }
 
 #stripe-description {

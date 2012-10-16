@@ -3,4 +3,8 @@
     = render :partial => 'layouts/slider'
   = render :partial => 'layouts/sidebar'
   #content
+    #flash
+      - flash.each do |type, message|
+        %div{:class => "message_#{type}"}
+          %p= message
     = yield

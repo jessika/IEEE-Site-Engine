@@ -1,10 +1,8 @@
 = form_for @signup, :url => events_signups_new_path,  :html => { :multipart => true } do |f|
   - if @signup.errors.any?
-    .error_messages
-      %h2 Form is invalid
-      %ul
-        - for message in @signup.errors.full_messages
-          %li= message
+    - @signup.errors.full_messages.each do |message|
+      .message_error
+        %p= message
   %p
     = f.label :role
     %br/
